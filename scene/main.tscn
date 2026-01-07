@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://d1ahwvydhev1f"]
+[gd_scene load_steps=4 format=3 uid="uid://d1ahwvydhev1f"]
+
+[ext_resource type="PackedScene" uid="uid://tyxyb8u2ab00" path="res://scene/player.tscn" id="1_itxqv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_no8bm"]
 size = Vector3(60, 2, 60)
@@ -20,3 +22,13 @@ shape = SubResource("BoxShape3D_no8bm")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
 mesh = SubResource("BoxMesh_no8bm")
+
+[node name="Player" parent="." instance=ExtResource("1_itxqv")]
+
+[node name="CameraPivot" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.258819, 0.9659258, 0, -0.9659258, 0.258819, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 19)
+projection = 1
+size = 19.0
