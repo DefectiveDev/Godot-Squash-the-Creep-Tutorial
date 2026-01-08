@@ -6,6 +6,8 @@ public partial class Main : Node
     [Export]
     public PackedScene MobScene;
 
+    private void OnPlayerHit() => GetNode<Timer>("MobTimer").Stop();
+
     private void OnMobTimerTimeout()
     {
         Mob mob = MobScene.Instantiate<Mob>();
