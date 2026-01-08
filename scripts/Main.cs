@@ -6,7 +6,23 @@ public partial class Main : Node
     [Export]
     public PackedScene MobScene;
 
-    private void OnPlayerHit() => GetNode<Timer>("MobTimer").Stop();
+    public override void _Ready() => GetNode<Control>("UserInterface/Retry").Hide();
+
+
+    private void OnPlayerHit()
+    {
+        GetNode<Timer>("MobTimer").Stop();
+
+        GetNode<Control>("UserInterface/Retry").Show();
+    }
+
+    public override void _UnhandledInput(InputEvent @event)
+    {
+        if (@event.IsActionPressed("ui_accept") && GetNode<Control>("UserInterface/Retry").Visible)
+        {
+            GetTree().ReloadCurrentScene();
+        }
+    }
 
     private void OnMobTimerTimeout()
     {
@@ -21,5 +37,7 @@ public partial class Main : Node
         mob.Initialize(mobSpawnLocation.Position, playerPosition);
 
         AddChild(mob);
+
+        mob.Squashed += GetNode<ScoreLabel>("UserInterface/ScoreLabel").OnMobSquashed;
     }
 }
