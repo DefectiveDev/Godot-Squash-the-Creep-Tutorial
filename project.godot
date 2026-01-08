@@ -16,6 +16,10 @@ run/main_scene="uid://d1ahwvydhev1f"
 config/features=PackedStringArray("4.5", "C#")
 config/icon="res://icon.webp"
 
+[autoload]
+
+MusicPlayer="*res://scene/music_player.tscn"
+
 [display]
 
 window/size/viewport_width=720
