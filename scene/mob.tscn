@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://bd16gu3226qu1"]
+[gd_scene load_steps=4 format=3 uid="uid://bd16gu3226qu1"]
 
 [ext_resource type="PackedScene" uid="uid://bicorb7we351t" path="res://assets/art/mob.glb" id="1_8jgfq"]
+[ext_resource type="Script" uid="uid://bhssqg336jvlq" path="res://scripts/Mob.cs" id="1_rtm52"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rtm52"]
 size = Vector3(2, 1.0603516, 3)
 
 [node name="Mob" type="CharacterBody3D"]
+script = ExtResource("1_rtm52")
 
 [node name="Pivot" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.28275907, 0)
@@ -21,3 +23,5 @@ metadata/_edit_lock_ = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.99836636, 0)
 aabb = AABB(-1.1879954, -0.98825145, -2.0450494, 2.3759909, 1.4618545, 4.090099)
 metadata/_edit_lock_ = true
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="." method="OnVisibilityNotifierScreenExited"]
