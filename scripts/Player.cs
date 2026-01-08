@@ -4,6 +4,9 @@ using System;
 public partial class Player : CharacterBody3D
 {
     [Export]
+    public int JumpImpulse = 20;
+
+    [Export]
     public int Speed = 14;
 
     [Export]
@@ -28,6 +31,11 @@ public partial class Player : CharacterBody3D
         if (!IsOnFloor())
         {
             _targetVelocity.Y -= FallAcceleration * (float)delta;
+        }
+
+        if (IsOnFloor() && Input.IsActionJustPressed("jump"))
+        {
+            _targetVelocity.Y = JumpImpulse;
         }
 
         Velocity = _targetVelocity;
